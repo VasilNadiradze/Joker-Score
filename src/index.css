@@ -1,0 +1,21 @@
+@font-face {
+  font-family: "MenuFont";
+  src: url("/fonts/menu.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* სათაურები */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "MenuFont", sans-serif;
+}
+
+/* ღილაკები */
+button, .btn {
+  font-family: "MenuFont", sans-serif;
+}
+
+/* ნავიგაციის მენიუ */
+.navbar, .nav-link, .navbar-brand {
+  font-family: "MenuFont", sans-serif;
+}
