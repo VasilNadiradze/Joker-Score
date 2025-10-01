@@ -6,16 +6,75 @@
 }
 
 /* სათაურები */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: "MenuFont", sans-serif;
 }
 
 /* ღილაკები */
-button, .btn {
+button,
+.btn {
   font-family: "MenuFont", sans-serif;
 }
 
 /* ნავიგაციის მენიუ */
-.navbar, .nav-link, .navbar-brand {
+.navbar,
+.nav-link,
+.navbar-brand {
   font-family: "MenuFont", sans-serif;
+}
+
+/* ფორმის wrapper */
+.card {
+  max-width: 400px; /* დავავიწროვოთ */
+  margin: 0 auto; /* ცენტრში */
+  border: none; /* card-ის ჩარჩო მოვაშოროთ */
+  box-shadow: none; /* ჩრდილიც მოვაშოროთ */
+  background: transparent; /* background მოვაშოროთ თუ გვინდა სუფთა */
+}
+
+/* label-ები */
+.form-label {
+  font-weight: 500;
+  color: #555; /* მუქი ნაცრისფერი */
+}
+
+/* input-ები, select-ები */
+.form-control,
+.form-select {
+  border-radius: 0; /* მოხსნათ rounded კუთხეები */
+  border: none; /* default საზღვრები მოვაშოროთ */
+  border-bottom: 1px solid #ccc; /* ქვედა ხაზი */
+  background-color: transparent;
+  box-shadow: none !important;
+}
+
+/* focus-ზე ქვედა ხაზი მწვანე */
+.form-control:focus,
+.form-select:focus {
+  border-color: #4caf50;
+  box-shadow: none;
+}
+
+/* checkbox-ები (switch-style) */
+.form-check-input {
+  cursor: pointer;
+}
+
+/* submit ღილაკი */
+.btn-primary {
+  background-color: #4caf50; /* მწვანე */
+  border: none;
+  border-radius: 0;
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+}
+
+.btn-primary:hover {
+  background-color: #45a049; /* hover მწვანე */
 }
