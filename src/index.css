@@ -6,75 +6,96 @@
 }
 
 /* სათაურები */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1, h2, h3, h4, h5, h6 {
   font-family: "MenuFont", sans-serif;
+  color: #000; /* შავი სათაურები */
 }
 
 /* ღილაკები */
-button,
-.btn {
+button, .btn {
   font-family: "MenuFont", sans-serif;
+  color: #fff !important; /* ღილაკის ტექსტი თეთრი */
 }
 
 /* ნავიგაციის მენიუ */
-.navbar,
-.nav-link,
-.navbar-brand {
+.navbar {
+  background: #4caf50 !important; /* მწვანე ფონი */
+}
+
+.navbar-brand,
+.nav-link {
   font-family: "MenuFont", sans-serif;
+  color: #fff !important; /* თეთრი ტექსტი */
+}
+
+.nav-link:hover {
+  color: #e8f5e9 !important; /* ღია hover */
 }
 
 /* ფორმის wrapper */
 .card {
-  max-width: 400px; /* დავავიწროვოთ */
-  margin: 0 auto; /* ცენტრში */
-  border: none; /* card-ის ჩარჩო მოვაშოროთ */
-  box-shadow: none; /* ჩრდილიც მოვაშოროთ */
-  background: transparent; /* background მოვაშოროთ თუ გვინდა სუფთა */
+  max-width: 400px;
+  margin: 0 auto;
+  border: none;
+  box-shadow: none;
+  background: transparent;
 }
 
-/* label-ები */
-.form-label {
-  font-weight: 500;
-  color: #555; /* მუქი ნაცრისფერი */
+/* label-ები, p, div (ძირითადი ტექსტები) */
+.form-label,
+p,
+div,
+span {
+  font-family: "MenuFont", sans-serif;
+  color: #000; /* შავი ტექსტი */
 }
 
 /* input-ები, select-ები */
 .form-control,
 .form-select {
-  border-radius: 0; /* მოხსნათ rounded კუთხეები */
-  border: none; /* default საზღვრები მოვაშოროთ */
-  border-bottom: 1px solid #ccc; /* ქვედა ხაზი */
+  border-radius: 0;
+  border: none;
+  border-bottom: 1px solid #4caf50;
   background-color: transparent;
   box-shadow: none !important;
+  color: #000; /* შავი ტექსტი */
 }
 
-/* focus-ზე ქვედა ხაზი მწვანე */
 .form-control:focus,
 .form-select:focus {
   border-color: #4caf50;
   box-shadow: none;
+  color: #000;
 }
 
-/* checkbox-ები (switch-style) */
+/* checkbox-ები, switch-ები */
 .form-check-input {
   cursor: pointer;
+  border-color: #4caf50;
+}
+
+.form-check-input:checked {
+  background-color: #4caf50;
+  border-color: #4caf50;
+}
+
+.form-check-label {
+  color: #000; /* შავი */
 }
 
 /* submit ღილაკი */
-.btn-primary {
-  background-color: #4caf50; /* მწვანე */
+.btn-primary, .btn-success {
+  background-color: #4caf50;
   border: none;
-  border-radius: 0;
+  border-radius: 8px;
   width: 100%;
   padding: 12px;
   font-size: 16px;
+  color: #fff !important; /* თეთრი ტექსტი */
+  transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
-.btn-primary:hover {
-  background-color: #45a049; /* hover მწვანე */
+.btn-primary:hover, .btn-success:hover {
+  background-color: #388e3c;
+  transform: scale(1.02);
 }

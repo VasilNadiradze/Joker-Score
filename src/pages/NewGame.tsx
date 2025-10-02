@@ -13,16 +13,16 @@ const NewGame: React.FC = () => {
   const [gameType, setGameType] = useState<GameType>("standard");
 
   // ხიშტი
-  const [missPenalty, setMissPenalty] = useState<MissPenalty>("ხიშტი");
+  const [xishti, setXishti] = useState<MissPenalty>("ხიშტი");
 
   // წყვილები
   const [pairs, setPairs] = useState(false);
 
   // მოშლა toggle
-  const [erasure, setErasure] = useState(false);
+  const [moshla, setMoshla] = useState(false);
 
   // დამატებითი ველები (მოშლა ჩართულია თუ არა)
-  const [rule, setRule] = useState<RuleOption>("without");
+  const [sxvebsEshlebat, setSxvebsEshlebat] = useState<RuleOption>("without");
   const [bolo, setBolo] = useState(true);
 
   // მოთამაშის სახელის ცვლილება
@@ -38,10 +38,10 @@ const NewGame: React.FC = () => {
     console.log({
       players,
       gameType,
-      missPenalty,
+      xishti,
       pairs,
-      erasure,
-      rule,
+      moshla,
+      sxvebsEshlebat,
       bolo,
     });
     // შემდეგ ეტაპზე აქ შეგვიძლია ცხრილის გენერაცია
@@ -81,8 +81,8 @@ const NewGame: React.FC = () => {
         <Form.Group className="mb-4">
           {/* <Form.Label>ხიშტი</Form.Label> */}
           <Form.Select
-            value={missPenalty}
-            onChange={(e) => setMissPenalty(e.target.value as MissPenalty)}
+            value={xishti}
+            onChange={(e) => setXishti(e.target.value as MissPenalty)}
           >
             <option value="ხიშტი">ხიშტი</option>
             <option value="200">200</option>
@@ -108,23 +108,23 @@ const NewGame: React.FC = () => {
           <Form.Check
             type="switch"
             id="erasure-switch"
-            checked={erasure}
-            onChange={(e) => setErasure(e.target.checked)}
+            checked={moshla}
+            onChange={(e) => setMoshla(e.target.checked)}
           />
         </Form.Group>
 
         {/* დამატებითი ველები თუ მოშლა ჩართულია */}
-        {erasure && (
+        {moshla && (
           <div className="p-3 border rounded bg-light mb-3">
             <p className="fw-bold">თუ პრემიაზე გავიდა 2 ან მეტი:</p>
             <Form.Check
               type="radio"
               id="rule-with"
-              name="rule"
+              name="sxvebsEshlebat"
               label="სხვებს ეშლებათ"
-              value="with"
-              checked={rule === "with"}
-              onChange={(e) => setRule(e.target.value as RuleOption)}
+              value="1"
+              checked={sxvebsEshlebat === "with"}
+              onChange={(e) => setSxvebsEshlebat(e.target.value as RuleOption)}
               className="mb-2"
             />
             <Form.Check
@@ -132,9 +132,9 @@ const NewGame: React.FC = () => {
               id="rule-without"
               name="rule"
               label="სხვებს არ ეშლებათ"
-              value="without"
-              checked={rule === "without"}
-              onChange={(e) => setRule(e.target.value as RuleOption)}
+              value="0"
+              checked={sxvebsEshlebat === "without"}
+              onChange={(e) => setSxvebsEshlebat(e.target.value as RuleOption)}
               className="mb-2"
             />
             <Form.Check
@@ -146,7 +146,7 @@ const NewGame: React.FC = () => {
           </div>
         )}
 
-        <Button type="submit" variant="success" className="mt-3 w-100">
+        <Button type="submit" variant="success" className="mt-3 w-100 p-3">
           დაწყება
         </Button>
       </Form>
