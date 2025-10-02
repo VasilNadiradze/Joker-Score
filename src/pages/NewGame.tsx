@@ -3,7 +3,6 @@ import { Form, Button, Card } from "react-bootstrap";
 
 type GameType = "standard" | "nine";
 type MissPenalty = "ხიშტი" | "200" | "500" | "200/500" | "x100";
-type RuleOption = "with" | "without";
 
 const NewGame: React.FC = () => {
   // მოთამაშეები
@@ -22,7 +21,7 @@ const NewGame: React.FC = () => {
   const [moshla, setMoshla] = useState(false);
 
   // დამატებითი ველები (მოშლა ჩართულია თუ არა)
-  const [sxvebsEshlebat, setSxvebsEshlebat] = useState<RuleOption>("without");
+  const [sxvebsEshlebat, setSxvebsEshlebat] = useState(true);
   const [bolo, setBolo] = useState(true);
 
   // მოთამაშის სახელის ცვლილება
@@ -116,26 +115,12 @@ const NewGame: React.FC = () => {
         {/* დამატებითი ველები თუ მოშლა ჩართულია */}
         {moshla && (
           <div className="p-3 border rounded bg-light mb-3">
-            <p className="fw-bold">თუ პრემიაზე გავიდა 2 ან მეტი:</p>
+            <p className="fw-bold">თუ პრემიაზე გავიდა 2 ან მეტი:</p>        
             <Form.Check
-              type="radio"
-              id="rule-with"
-              name="sxvebsEshlebat"
+              type="checkbox"
               label="სხვებს ეშლებათ"
-              value="1"
-              checked={sxvebsEshlebat === "with"}
-              onChange={(e) => setSxvebsEshlebat(e.target.value as RuleOption)}
-              className="mb-2"
-            />
-            <Form.Check
-              type="radio"
-              id="rule-without"
-              name="rule"
-              label="სხვებს არ ეშლებათ"
-              value="0"
-              checked={sxvebsEshlebat === "without"}
-              onChange={(e) => setSxvebsEshlebat(e.target.value as RuleOption)}
-              className="mb-2"
+              checked={sxvebsEshlebat}
+              onChange={(e) => setSxvebsEshlebat(e.target.checked)}
             />
             <Form.Check
               type="checkbox"
