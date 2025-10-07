@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import { Form, Button, Card } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import type { GameConfig } from "../utils/types";
 
 type GameType = "standard" | "nine";
-type MissPenalty = "ხიშტი" | "200" | "500" | "200/500" | "x100";
+type MissPenalty = "" | "200" | "500" | "200/500" | "x100";
 
 const NewGame: React.FC = () => {
+  const navigate = useNavigate();
+
   // მოთამაშეები
   const [players, setPlayers] = useState(["", "", "", ""]);
 
@@ -12,7 +16,7 @@ const NewGame: React.FC = () => {
   const [gameType, setGameType] = useState<GameType>("standard");
 
   // ხიშტი
-  const [xishti, setXishti] = useState<MissPenalty>("ხიშტი");
+  const [xishti, setXishti] = useState<MissPenalty>("");
 
   // წყვილები
   const [pairs, setPairs] = useState(false);
@@ -21,8 +25,8 @@ const NewGame: React.FC = () => {
   const [moshla, setMoshla] = useState(false);
 
   // დამატებითი ველები (მოშლა ჩართულია თუ არა)
-  const [sxvebsEshlebat, setSxvebsEshlebat] = useState(true);
-  const [bolo, setBolo] = useState(true);
+  const [sxvebsEshlebat, setSxvebsEshlebat] = useState(false);
+  const [boloIshleba, setBoloIshleba] = useState(false);
 
   // მოთამაშის სახელის ცვლილება
   const handlePlayerChange = (index: number, value: string) => {
@@ -34,16 +38,21 @@ const NewGame: React.FC = () => {
   // ფორმის გაგზავნა
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log({
+
+    const formData: GameConfig = {
       players,
       gameType,
       xishti,
       pairs,
       moshla,
       sxvebsEshlebat,
-      bolo,
-    });
-    // შემდეგ ეტაპზე აქ შეგვიძლია ცხრილის გენერაცია
+      boloIshleba,
+    };
+
+    console.log(formData);
+
+    // გადავდივართ /game- ზე და state-ად გავაგზავნით formData
+    navigate("/game", { state: formData });
   };
 
   return (
@@ -78,18 +87,20 @@ const NewGame: React.FC = () => {
 
         {/* ხიშტი */}
         <Form.Group className="mb-4">
-          {/* <Form.Label>ხიშტი</Form.Label> */}
           <Form.Select
             value={xishti}
             onChange={(e) => setXishti(e.target.value as MissPenalty)}
+            required
           >
-            <option value="ხიშტი">ხიშტი</option>
+            <option value="" disabled>
+              ხიშტი
+            </option>
             <option value="200">200</option>
             <option value="500">500</option>
             <option value="200/500">200 / 500</option>
             <option value="x100">x100</option>
           </Form.Select>
-        </Form.Group>        
+        </Form.Group>
 
         {/* წყვილები  toggle */}
         <Form.Group className="ps-2 mb-3 d-flex align-items-center justify-content-between">
@@ -115,7 +126,7 @@ const NewGame: React.FC = () => {
         {/* დამატებითი ველები თუ მოშლა ჩართულია */}
         {moshla && (
           <div className="p-3 border rounded bg-light mb-3">
-            <p className="fw-bold">თუ პრემიაზე გავიდა 2 ან მეტი:</p>        
+            <p className="fw-bold">თუ პრემიაზე გავიდა 2 ან მეტი:</p>
             <Form.Check
               type="checkbox"
               label="სხვებს ეშლებათ"
@@ -125,8 +136,8 @@ const NewGame: React.FC = () => {
             <Form.Check
               type="checkbox"
               label="ბოლო წაღებული იშლება"
-              checked={bolo}
-              onChange={(e) => setBolo(e.target.checked)}
+              checked={boloIshleba}
+              onChange={(e) => setBoloIshleba(e.target.checked)}
             />
           </div>
         )}
